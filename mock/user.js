@@ -23,10 +23,28 @@ const users = {
   }
 }
 
+const contacts = [
+  {
+    id: 1,
+    name: 'Tom',
+    messages: ['帮我发货', '下午六点半前处理完，谢谢']
+  },
+  {
+    id: 2,
+    name: 'Jacky',
+    messages: ['记得入仓']
+  },
+  {
+    id: 3,
+    name: 'Tony',
+    messages: ['晚上一起吃饭']
+  }
+]
+
 module.exports = [
   // user login
   {
-    url: '/vue-admin-template/user/login',
+    url: '/next-smart-ship/user/login',
     type: 'post',
     response: config => {
       const { username } = config.body
@@ -49,7 +67,7 @@ module.exports = [
 
   // get user info
   {
-    url: '/vue-admin-template/user/info\.*',
+    url: '/next-smart-ship/user/info\.*',
     type: 'get',
     response: config => {
       const { token } = config.query
@@ -72,12 +90,24 @@ module.exports = [
 
   // user logout
   {
-    url: '/vue-admin-template/user/logout',
+    url: '/next-smart-ship/user/logout',
     type: 'post',
     response: _ => {
       return {
         code: 20000,
         data: 'success'
+      }
+    }
+  },
+  {
+    url: '/next-smart-ship/user/messages',
+    type: 'get',
+    response: _ => {
+      return {
+        code: 20000,
+        data: {
+          contacts
+        }
       }
     }
   }

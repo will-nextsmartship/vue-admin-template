@@ -7,11 +7,13 @@
         <navbar />
       </div>
       <app-main />
+      <live-chat v-if="liveChat" />
     </div>
   </div>
 </template>
 
 <script>
+import LiveChat from '@/components/LiveChat'
 import { Navbar, Sidebar, AppMain } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 
@@ -20,9 +22,15 @@ export default {
   components: {
     Navbar,
     Sidebar,
-    AppMain
+    AppMain,
+    LiveChat
   },
   mixins: [ResizeMixin],
+  data() {
+    return {
+      showSettings: true
+    }
+  },
   computed: {
     sidebar() {
       return this.$store.state.app.sidebar
@@ -32,6 +40,9 @@ export default {
     },
     fixedHeader() {
       return this.$store.state.settings.fixedHeader
+    },
+    liveChat() {
+      return this.$store.state.settings.liveChat
     },
     classObj() {
       return {

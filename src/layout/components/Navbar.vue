@@ -5,23 +5,19 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
-      <el-dropdown class="avatar-container" trigger="click">
+      <template v-if="device!=='mobile'">
+        <search id="header-search" class="right-menu-item" />
+      </template>
+      <notification class="right-menu-item" />
+      <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
+          <a class="username">{{ name }}</a>
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
         </div>
-        <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/">
-            <el-dropdown-item>
-              Home
-            </el-dropdown-item>
+        <el-dropdown-menu slot="dropdown">
+          <router-link to="/profile/index">
+            <el-dropdown-item>Profile</el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">Log Out</span>
           </el-dropdown-item>
@@ -35,16 +31,22 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import Search from '@/components/HeaderSearch'
+import Notification from '@/components/Notification'
 
 export default {
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    Search,
+    Notification
   },
   computed: {
     ...mapGetters([
       'sidebar',
-      'avatar'
+      'avatar',
+      'device',
+      'name'
     ])
   },
   methods: {
@@ -112,7 +114,7 @@ export default {
     }
 
     .avatar-container {
-      margin-right: 30px;
+      margin-right: 20px;
 
       .avatar-wrapper {
         margin-top: 5px;
@@ -125,12 +127,12 @@ export default {
           border-radius: 10px;
         }
 
-        .el-icon-caret-bottom {
+        .username {
           cursor: pointer;
           position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
+          right: 40px;
+          top: -5px;
+          width: 120px;
         }
       }
     }

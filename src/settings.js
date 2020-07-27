@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Vue Admin Template',
+  title: 'NextSmartShip',
 
   /**
    * @type {boolean} true | false
@@ -12,5 +12,11 @@ module.exports = {
    * @type {boolean} true | false
    * @description Whether show the logo in sidebar
    */
-  sidebarLogo: false
+  sidebarLogo: true,
+
+  /**
+   * @type {boolean} true | false
+   * @description Whether show live chat icon
+   */
+  liveChat: true
 }

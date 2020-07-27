@@ -1,18 +1,39 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
+    <el-row :gutter="12">
+      <el-col v-bind="colSpan" class="col">
+        <line-marker />
+      </el-col>
+      <el-col v-bind="colSpan" class="col">
+        <mix-chart />
+      </el-col>
+      <el-col v-bind="colSpan" class="col">
+        <pie-group />
+      </el-col>
+      <el-col v-bind="colSpan" class="col">
+        <panel-group />
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import LineMarker from '@/components/Charts/LineMarker'
+import MixChart from '@/components/Charts/MixChart'
+import PieGroup from './components/PieGroup'
+import PanelGroup from './components/PanelGroup'
 
 export default {
   name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
+  components: { LineMarker, MixChart, PanelGroup, PieGroup },
+  data() {
+    return {
+      colSpan: {
+        xs: 24,
+        sm: 24,
+        lg: 12
+      }
+    }
   }
 }
 </script>
@@ -20,11 +41,10 @@ export default {
 <style lang="scss" scoped>
 .dashboard {
   &-container {
-    margin: 30px;
-  }
-  &-text {
-    font-size: 30px;
-    line-height: 46px;
+    margin: 15px;
+    .col {
+      margin-bottom: 14px
+    }
   }
 }
 </style>
