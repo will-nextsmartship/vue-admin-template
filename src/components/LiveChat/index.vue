@@ -12,39 +12,31 @@
 </template>
 
 <script>
-import Chat from './chat'
+import Chat from "./chat";
 
 export default {
-  name: 'LiveChat',
+  name: "LiveChat",
   components: { Chat },
-  props: {
-
-  },
+  props: {},
   data() {
     return {
       dialogTableVisible: false,
       messageCount: 4,
       form: {
-        message: ''
-      }
-    }
+        message: "",
+      },
+    };
   },
-  computed: {
-
-  },
-  watch: {
-
-  },
-  mounted() {
-
-  },
+  computed: {},
+  watch: {},
+  mounted() {},
 
   methods: {
     startChat() {
-      this.$refs.chat.handleVisible(true)
-    }
-  }
-}
+      this.$refs.chat.handleVisible(true);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

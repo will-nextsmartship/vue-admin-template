@@ -18,14 +18,20 @@ import PieChart from '@/components/Charts/PieChart'
 export default {
   name: 'PieGroup',
   components: { PieChart },
-  data() {
-    return {
-      colSpan: {
-        xs: 24,
-        sm: 24,
-        lg: 12
+  props: {
+    colSpan: {
+      type: Object,
+      default() {
+        return {
+          xs: 24,
+          sm: 24,
+          lg: 12
+        }
       }
     }
+  },
+  data() {
+    return {}
   }
 }
 </script>

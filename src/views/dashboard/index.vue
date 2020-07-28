@@ -1,38 +1,37 @@
 <template>
-  <div class="dashboard-container">
-    <el-row :gutter="12">
-      <el-col v-bind="colSpan" class="col">
-        <line-marker />
-      </el-col>
-      <el-col v-bind="colSpan" class="col">
-        <mix-chart />
-      </el-col>
-      <el-col v-bind="colSpan" class="col">
-        <pie-group />
-      </el-col>
-      <el-col v-bind="colSpan" class="col">
-        <panel-group />
-      </el-col>
-    </el-row>
+  <div v-if="roleDashboard('admin')">
+    <Admin />
+  </div>
+  <div v-else-if="roleDashboard('sales')">
+    <Sales />
+  </div>
+  <div v-else-if="roleDashboard('support')">
+    <Support />
+  </div>
+  <div v-else-if="roleDashboard('warehouse')">
+    <Warehouse />
   </div>
 </template>
 
 <script>
-import LineMarker from '@/components/Charts/LineMarker'
-import MixChart from '@/components/Charts/MixChart'
-import PieGroup from './components/PieGroup'
-import PanelGroup from './components/PanelGroup'
+import Admin from './Admin'
+import Sales from './Sales'
+import Support from './Support'
+import Warehouse from './Warehouse'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Dashboard',
-  components: { LineMarker, MixChart, PanelGroup, PieGroup },
+  components: { Admin, Sales, Support, Warehouse },
   data() {
-    return {
-      colSpan: {
-        xs: 24,
-        sm: 24,
-        lg: 12
-      }
+    return {}
+  },
+  computed: {
+    ...mapGetters([
+      'roles'
+    ]),
+    roleDashboard() {
+      return (role) => this.roles.indexOf(role) > -1
     }
   }
 }

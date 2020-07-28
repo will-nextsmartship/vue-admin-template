@@ -22,7 +22,6 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-
   {
     path: '/',
     component: Layout,
@@ -31,7 +30,11 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: {
+        title: 'Dashboard',
+        icon: 'dashboard',
+        roles: ['admin', 'sales', 'support', 'warehouse']
+      }
     }]
   },
   {
@@ -42,7 +45,11 @@ export const constantRoutes = [
         path: '',
         name: 'Inventory',
         component: () => import('@/views/inventory/index'),
-        meta: { title: 'Inventory', icon: 'el-icon-receiving' }
+        meta: {
+          title: 'Inventory',
+          icon: 'el-icon-receiving',
+          roles: ['admin', 'support', 'warehouse']
+        }
       }
     ]
   },
@@ -54,7 +61,11 @@ export const constantRoutes = [
         path: '',
         name: 'Inbound',
         component: () => import('@/views/inbound/index'),
-        meta: { title: 'Inbound', icon: 'el-icon-s-unfold' }
+        meta: {
+          title: 'Inbound',
+          icon: 'el-icon-s-unfold',
+          roles: ['admin', 'support', 'warehouse']
+        }
       }
     ]
   },
@@ -66,7 +77,11 @@ export const constantRoutes = [
         path: '',
         name: 'Outbound',
         component: () => import('@/views/outbound/index'),
-        meta: { title: 'Outbound', icon: 'el-icon-s-fold' }
+        meta: {
+          title: 'Outbound',
+          icon: 'el-icon-s-fold',
+          roles: ['admin', 'support', 'warehouse']
+        }
       }
     ]
   },
@@ -78,7 +93,11 @@ export const constantRoutes = [
         path: '',
         name: 'Transfer',
         component: () => import('@/views/transfer/index'),
-        meta: { title: 'Transfer', icon: 'el-icon-s-promotion' }
+        meta: {
+          title: 'Transfer',
+          icon: 'el-icon-s-promotion',
+          roles: ['admin', 'support', 'warehouse']
+        }
       }
     ]
   },
@@ -90,7 +109,11 @@ export const constantRoutes = [
         path: '',
         name: 'User Management',
         component: () => import('@/views/users-management/index'),
-        meta: { title: 'User Management', icon: 'user' }
+        meta: {
+          title: 'User Management',
+          icon: 'user',
+          roles: ['admin', 'support']
+        }
       }
     ]
   },
@@ -102,7 +125,11 @@ export const constantRoutes = [
         path: '',
         name: 'Channel',
         component: () => import('@/views/channel/index'),
-        meta: { title: 'Channel', icon: 'el-icon-truck' }
+        meta: {
+          title: 'Channel',
+          icon: 'el-icon-truck',
+          roles: ['admin', 'support']
+        }
       }
     ]
   },
@@ -114,7 +141,11 @@ export const constantRoutes = [
         path: '',
         name: 'Finance',
         component: () => import('@/views/finance/index'),
-        meta: { title: 'Finance', icon: 'el-icon-money' }
+        meta: {
+          title: 'Finance',
+          icon: 'el-icon-money',
+          roles: ['admin', 'sales', 'support', 'warehouse']
+        }
       }
     ]
   },
@@ -126,7 +157,11 @@ export const constantRoutes = [
         path: '',
         name: 'Settings',
         component: () => import('@/views/settings/index'),
-        meta: { title: 'Settings', icon: 'el-icon-setting' }
+        meta: {
+          title: 'Settings',
+          icon: 'el-icon-setting',
+          roles: ['admin', 'sales', 'support', 'warehouse']
+        }
       }
     ]
   },

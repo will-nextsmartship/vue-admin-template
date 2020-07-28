@@ -3,6 +3,15 @@ const tokens = {
   admin: {
     token: 'admin-token'
   },
+  sales: {
+    token: 'sales-token'
+  },
+  support: {
+    token: 'support-token'
+  },
+  warehouse: {
+    token: 'warehouse-token'
+  },
   editor: {
     token: 'editor-token'
   }
@@ -15,11 +24,23 @@ const users = {
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Super Admin'
   },
-  'editor-token': {
-    roles: ['editor'],
-    introduction: 'I am an editor',
+  'sales-token': {
+    roles: ['sales'],
+    introduction: 'I am a sales person',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Normal Editor'
+    name: 'Sales Person'
+  },
+  'support-token': {
+    roles: ['support'],
+    introduction: 'I am a support',
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: 'Support man'
+  },
+  'warehouse-token': {
+    roles: ['warehouse'],
+    introduction: 'I am a warehouse employee',
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: 'Warehouse Person'
   }
 }
 
