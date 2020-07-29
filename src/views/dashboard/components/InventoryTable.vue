@@ -1,60 +1,60 @@
 <template>
   <div class="table-container">
-    <el-table v-loading="listLoading" :data="list" border fit highlight-current-row>
-      <el-table-column align="center" label="ID" width="80">
-        <template slot-scope="{row}">
-          <span>{{ row.id }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column width="200" align="center" label="SKU">
-        <template slot-scope="{row}">
-          <span>{{ row.sku }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column width="200" align="center" label="Warehouse">
-        <template slot-scope="{row}">
-          <span>{{ row.warehouse }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column width="180" align="center" label="Available Unit">
-        <template slot-scope="{row}">
-          <span>{{ row.available_qty }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column width="180" align="center" label="Prepare Ship">
-        <template slot-scope="{row}">
-          <span>{{ row.prepare_ship }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" label="Storage">
-        <template slot-scope="{row}">
-          <span>{{ row.storage }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" label="Status">
-        <template slot-scope="{row}">
-          <span>{{ row.status }}</span>
-        </template>
-      </el-table-column>
-    </el-table>
+    <simple-table
+      :list="list"
+      :list-loading="listLoading"
+      :columns="columns"
+      :list-query="listQuery"
+    />
   </div>
 </template>
 
 <script>
 import { fetchList } from '@/api/inventory'
+import SimpleTable from '@/components/SimpleTable'
 
 export default {
   name: 'InventoryTable',
+  components: { SimpleTable },
   data() {
     return {
       list: null,
       listLoading: true,
+      columns: [
+        {
+          width: '80',
+          label: 'ID',
+          index: 'id'
+        },
+        {
+          width: '200',
+          label: 'SKU',
+          index: 'sku'
+        },
+        {
+          width: '200',
+          label: 'Warehouse',
+          index: 'warehouse'
+        },
+        {
+          width: '180',
+          label: 'Available Unit',
+          index: 'available_qty'
+        },
+        {
+          width: '180',
+          label: 'Prepare Ship',
+          index: 'prepare_ship'
+        },
+        {
+          label: 'Storage',
+          index: 'storage'
+        },
+        {
+          label: 'Status',
+          index: 'status'
+        }
+      ],
       listQuery: {
         page: 1,
         limit: 10

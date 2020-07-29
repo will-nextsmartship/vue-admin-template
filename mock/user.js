@@ -1,3 +1,17 @@
+const Mock = require('mockjs')
+const List = []
+const count = 20
+
+for (let i = 0; i < count; i++) {
+  List.push(Mock.mock({
+    id: '@id',
+    name: '@first',
+    average_monthly_transactions: '@integer(30, 50)',
+    sales: '@name',
+    support: '@name',
+    balance: '@integer(20, 300).@integer(20, 30)'
+  }))
+}
 
 const tokens = {
   admin: {
@@ -128,6 +142,22 @@ module.exports = [
         code: 20000,
         data: {
           contacts
+        }
+      }
+    }
+  },
+  {
+    url: '/next-smart-ship/user/list',
+    type: 'get',
+    response: config => {
+      const { page = 1, limit = 20 } = config.query
+      const mockList = List
+      const pageList = mockList.filter((item, index) => index < limit * page && index >= limit * (page - 1))
+      return {
+        code: 20000,
+        data: {
+          total: mockList.length,
+          items: pageList
         }
       }
     }

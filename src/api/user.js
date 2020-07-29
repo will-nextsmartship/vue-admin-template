@@ -23,3 +23,11 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function fetchList(query) {
+  return request({
+    url: `${config.API_PREFIX}user/list`,
+    method: 'get',
+    params: query
+  })
+}
